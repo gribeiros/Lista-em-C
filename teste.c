@@ -4,6 +4,7 @@
 
 typedef struct lista{
 int info;
+char nome[30];
 struct lista* prox;
 }Lista;
 
@@ -11,17 +12,18 @@ Lista* criaLista(){
     return NULL;
 }
 
-Lista* insereLista(Lista* l,int a){
-    Lista* novo = (Lista*)malloc(sizeof(Lista));
-    novo->info = a;
-    novo->prox=l;
-    return novo;
+Lista* insereLista(Lista* l,int a,char n[30]){
+    Lista* dados = (Lista*)malloc(sizeof(Lista));
+    dados->info = a;
+    dados->nome[30] = n[30];
+    dados->prox=l;
+    return dados;
 }
 
 void imprimiLista(Lista* l){
     Lista* p;
     for(p=l;p!=NULL;p=p->prox){
-        printf("%d\n",p->info);
+        printf("%d\n%s",p->info,p->nome);
     }
 }
 
@@ -72,40 +74,39 @@ while(p != NULL){
 }
 
 
-
-
-
-
 int main(){
 Lista* lista;
 int op=0;
-
+char n[30];
 int a=0,b=0,d=0,e=0,w=0;
-
 do{
-printf("\n98Escolha uma das opções abaixo:\n\n1-Criar a lista\n2-Inserir na lista\n3-imprimir lista\n4-Busca\n5-Remover da lista\n6-Liberar lista\n0-Sair\n\nOP:");
+printf("\nEscolha uma das opções abaixo:\n\n1-Criar a lista\n2-Inserir na lista\n3-imprimir lista\n4-Busca\n5-Remover da lista\n6-Liberar lista\n0-Sair\n\nOP:");
 scanf("%d",&op);
 system("cls || clear");
 switch (op)
 {
 case 0:
     w=1;
+    printf("\nAte logo!\n");
 break;
 
 case 1:
       lista = criaLista();
       printf("\nCriada\n\n");
 break;
-
+//Inserir
 case 2:
-      printf("Quantos numeros quer inserir:");
-scanf("%d",&a);
+    printf("Inserir:");
+    scanf("%d",&a);
 for(int c=0;c<a;c++){
-    printf("Numero %d: ",c+1);
+    printf("Numero %d: ",(c+1));
     scanf("%d",&b);
-lista = insereLista(lista,b);
+    printf("Nome %d:",(c+1));
+    scanf("%s",n);
+lista = insereLista(lista,b,n);
 }
 system("cls || clear");
+
 break;
 
 case 3:
@@ -119,7 +120,7 @@ case 4:
     system("cls || clear");
       printf("Buscar: ");
 scanf("%d",&d);
-if(buscar(lista,d)==NULL){
+if(buscar(lista,d) == NULL){
     printf("\nNão encontrou\n\n");
     }
     else{
