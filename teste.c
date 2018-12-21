@@ -99,10 +99,12 @@ case 2:
     printf("Inserir:");
     scanf("%d",&a);
 for(int c=0;c<a;c++){
-    printf("Nome %d:",(c+1));
-    scanf("%s",n);
-    printf("Numero %d: ",(c+1));
+    printf("Numero Cliente %d: ",(c+1));
     scanf("%d",&b);
+    getchar();
+    printf("Nome Cliente: %d: ",(c+1));
+    fgets(n,40,stdin);
+    printf("\n");
     lista = insereLista(lista,b,n);
 }
 system("cls || clear");
