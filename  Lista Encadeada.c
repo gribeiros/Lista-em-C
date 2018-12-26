@@ -99,12 +99,12 @@ case 2:
     printf("Inserir:");
     scanf("%d",&a);
 for(int c=0;c<a;c++){
-    printf("Numero Cliente %d: ",(c+1));
+    printf("\n#%d\n",(c+1));
+    printf("Numero Cliente:" );
     scanf("%d",&b);
     getchar();
-    printf("Nome Cliente: %d: ",(c+1));
+    printf("Nome Cliente:" );
     fgets(n,40,stdin);
-    printf("\n");
     lista = insereLista(lista,b,n);
 }
 system("cls || clear");
@@ -115,7 +115,6 @@ case 3:
     system("cls || clear");
     printf("Lista Impressa:\n\n");
       imprimiLista(lista);
-      printf("\n");
 break;
 
 case 4:
@@ -146,10 +145,12 @@ case 6:
     liberaLista(lista);
     printf("Liberada\n");
 break;
+
 default:
     system("cls || clear");
     printf("Opção nao e valida\n");
     }
+
 }while(op);
 
 return 0;
